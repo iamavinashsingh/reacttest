@@ -1,35 +1,28 @@
-import { StyleSheet, Text, SafeAreaView , View ,ScrollView , Image , FlatList} from 'react-native'
+import { StyleSheet, Text, SafeAreaView , View,Button ,TextInput} from 'react-native'
 import React, { use } from 'react'
 
-
-const dummy = [
-  {id: 1, title: 'Ben10', name: 'Classic', image: 'https://wallpaperaccess.com/full/983769.jpg'},
-  {id: 2, title: 'Ben10', name: 'Alien Force', image: 'https://wallpaperaccess.com/full/2403936.jpg'},
-  {id: 3, title: 'Ben10', name: 'Omniverse', image: 'https://wallpaperaccess.com/full/5230927.jpg'},
-  {id: 4, title: 'Ben10', name: 'Reboot', image: 'https://wallpaperaccess.com/full/5964286.png'},
-  {id: 5, title: 'Ben10', name: 'Ultimate Alien', image: 'https://wallpaperaccess.com/full/4407142.jpg'},
-]
 
 const App = () => {
 
   return (
-  <SafeAreaView style={style.mainArea}>
-    <FlatList
-      data={dummy}
-      renderItem={({item})=>(
-        <View style={style.card}>
-          <Image source={{uri: item.image}} style={style.image}/>
-          <View style={style.text}>
-            <Text style={style.title}>{item.title}</Text>
-            <Text style={style.name}>{item.name}</Text>
-          </View>          
-        </View>
-      )}
-      keyExtractor={(item)=>item.id}
-      itemSeparatorComponent={()=><View style={{height: 20}} />}
-    />
-
-            
+    <SafeAreaView style={style.container}>
+      <View style={style.formContainer}>
+        <Text style={style.text}>Namaskar Mitro</Text>
+        <TextInput
+          placeholder='Enter Your Name'
+          style={style.textInput}
+        />
+        <TextInput
+          placeholder='Enter Your Email'
+          style={style.textInput}
+        />
+        <TextInput
+          placeholder='Enter Your Password'
+          style={style.textInput}
+        />
+        <Button title='Sumbit' ></Button>
+      </View>
+      
     </SafeAreaView>
   )
 }
@@ -37,43 +30,42 @@ const App = () => {
 export default App  
 
 const style = StyleSheet.create({
-  mainArea: {
-    width: '100%',
-    height: '100%',
-    padding: 10,
-    paddingTop: 50,
-  },
-  card:{
-    flexDirection: 'row',
-    width: 250,
-    height: 80,
-    margin:10,
-    paddingLeft: 20,
-    paddingRight: 20,
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 10,
-    backgroundColor: '#383839ff',
-    borderRadius: 10,
-  },
-  image:{
-    width: 60,
-    height: 60,
-    borderRadius: 50,
-  },
-  text:{
-    alignItems: 'space-between',
     justifyContent: 'center',
+    padding: 20,
   },
-  title: {
+  formContainer:{
+    borderWidth: 1,
+    borderColor: '#fff',
+    borderRadius: 10,
+    padding: 20,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#333',
+  }
+  ,
+  text:{
+    color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'white',
-    marginTop: 10,
-  },  
-  name: {
+    marginBottom: 20,
+  },
+  textInput: {
+    width: '100%',
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#fff',
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    color: '#fff',
+    marginBottom: 15,
+    backgroundColor: '#444',
     fontSize: 16,
-    color: 'white',
-    marginTop: 5,
+    fontWeight: '500',
+    placeholderTextColor: '#aaa',
   },
 })  
