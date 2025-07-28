@@ -8,10 +8,30 @@ const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Home"> {/* ✅ Optional but recommended */}
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Explore" component={Explore} />
-      <Stack.Screen name="Profile" component={Profile} />
+    <Stack.Navigator initialRouteName="Home"
+      screenOptions={{
+        headerStyle: { backgroundColor: 'blue' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+        headerTitleAlign: 'center',
+        headerBackVisible: false,
+      }}
+    > 
+      <Stack.Screen 
+        name="Home" 
+        component={Home}  
+        
+      />
+      <Stack.Screen 
+        name="Explore" 
+        component={Explore} 
+        
+      />
+      <Stack.Screen 
+        name="Profile" 
+        component={Profile} 
+        
+      />
     </Stack.Navigator>
   );
 };
@@ -19,7 +39,7 @@ const StackNavigator = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <StackNavigator /> {/* ✅ This is fine */}
+      <StackNavigator /> 
     </NavigationContainer>
   );
 };
