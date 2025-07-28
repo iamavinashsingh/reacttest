@@ -1,71 +1,27 @@
-import { StyleSheet, Text, SafeAreaView , View,Button ,TextInput} from 'react-native'
-import React, { use } from 'react'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './src/screens/Home';
+import Explore from './src/screens/Explore';
+import Profile from './src/screens/Profile';
+import { NavigationContainer } from '@react-navigation/native';
 
+const Stack = createNativeStackNavigator();
+
+const StackNavigator = () => {
+  return (
+    <Stack.Navigator initialRouteName="Home"> {/* ✅ Optional but recommended */}
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Explore" component={Explore} />
+      <Stack.Screen name="Profile" component={Profile} />
+    </Stack.Navigator>
+  );
+};
 
 const App = () => {
-
   return (
-    <SafeAreaView style={style.container}>
-      <View style={style.formContainer}>
-        <Text style={style.text}>Namaskar Mitro</Text>
-        <TextInput
-          placeholder='Enter Your Name'
-          style={style.textInput}
-        />
-        <TextInput
-          placeholder='Enter Your Email'
-          style={style.textInput}
-        />
-        <TextInput
-          placeholder='Enter Your Password'
-          style={style.textInput}
-        />
-        <Button title='Sumbit' ></Button>
-      </View>
-      
-    </SafeAreaView>
-  )
-}
+    <NavigationContainer>
+      <StackNavigator /> {/* ✅ This is fine */}
+    </NavigationContainer>
+  );
+};
 
-export default App  
-
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  formContainer:{
-    borderWidth: 1,
-    borderColor: '#fff',
-    borderRadius: 10,
-    padding: 20,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#333',
-  }
-  ,
-  text:{
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  textInput: {
-    width: '100%',
-    height: 50,
-    borderWidth: 1,
-    borderColor: '#fff',
-    borderRadius: 10,
-    paddingHorizontal: 20,
-    color: '#fff',
-    marginBottom: 15,
-    backgroundColor: '#444',
-    fontSize: 16,
-    fontWeight: '500',
-    placeholderTextColor: '#aaa',
-  },
-})  
+export default App;
